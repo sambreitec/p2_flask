@@ -17,8 +17,9 @@ app.secret_key = 'mysecretkey'
 @app.route('/')
 def Index():
     cur = mysql.connection.cursor()
+    cur.execute('SELECT * FROM contacts')
     data = cur.fetchall()
-    print(data)
+    print(data) 
     return render_template('index.html', contacts = data)
 
 @app.route('/add_contact', methods=['POST'])
@@ -66,7 +67,7 @@ def delete_contact(id):
     cur = mysql.connection.cursor()
     cur.execute('DELETE FROM contacts WHERE id = {0}' .format(id))
     mysql.connection.commit()
-    flash('Contact Removed Succesfully')
+    flash('Contactos Removed Succesfully')
     return redirect(url_for('Index'))
 
 
