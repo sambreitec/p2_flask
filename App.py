@@ -32,7 +32,7 @@ def add_contact():
         cur.execute('INSERT INTO contacts (fullname, phone, email) VALUES (%s, %s, %s)',
         (fullname, phone, email))
         mysql.connection.commit()
-        flash('Contact Added Succesfully')
+        flash('Contacto Added Succesfully')
         return redirect(url_for('Index')) 
 
 @app.route('/edit/<id>', methods = ['POST', 'GET'])
