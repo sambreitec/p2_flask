@@ -14,12 +14,11 @@ mysql = MySQL(app)
 
 app.secret_key = 'mysecretkey'
 
-@app.route('/pija')
+@app.route('/')
 def Index():
     cur = mysql.connection.cursor()
     data = cur.fetchall()
-    print(data) 
-    print(pija) 
+    print(data)
     return render_template('index.html', contacts = data)
 
 @app.route('/add_contact', methods=['POST'])
